@@ -1,0 +1,15 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:Explorer"
+             RequestedThemeVariant="Light"
+             x:Class="Explorer.App">
+  <Application.DataTemplates>
+    <local:ViewLocator/>
+  </Application.DataTemplates>
+
+  <Application.Styles>
+    <FluentTheme/>
+    <StyleInclude Source="avares://Avalonia.Controls.TreeDataGrid/Themes/Fluent.axaml"/>
+    <StyleInclude Source="avares://Explorer/Themes/Themes.axaml"/>
+  </Application.Styles>
+</Application>

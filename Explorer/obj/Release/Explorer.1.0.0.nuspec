@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Explorer</id>
+    <version>1.0.0</version>
+    <authors>Explorer</authors>
+    <description>Package Description</description>
+    <repository type="git" commit="2260744ff0531199e913967350e455b8bb25b1f3" />
+    <dependencies>
+      <group targetFramework="net6.0">
+        <dependency id="Avalonia" version="11.0.4" exclude="Build,Analyzers" />
+        <dependency id="Avalonia.Controls.TreeDataGrid" version="11.0.1" exclude="Build,Analyzers" />
+        <dependency id="Avalonia.Desktop" version="11.0.4" exclude="Build,Analyzers" />
+        <dependency id="Avalonia.ReactiveUI" version="11.0.4" exclude="Build,Analyzers" />
+        <dependency id="Avalonia.Themes.Fluent" version="11.0.4" exclude="Build,Analyzers" />
+        <dependency id="Avalonia.Xaml.Behaviors" version="11.0.2" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="D:\New folder\New folder1\Explorer\Explorer\bin\Release\net6.0\Explorer.runtimeconfig.json" target="lib\net6.0\Explorer.runtimeconfig.json" />
+    <file src="D:\New folder\New folder1\Explorer\Explorer\bin\Release\net6.0\Explorer.dll" target="lib\net6.0\Explorer.dll" />
+  </files>
+</package>

@@ -1,0 +1,134 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:fvm="using:Explorer.ViewModels.TabBar"
+             mc:Ignorable="d" d:DesignWidth="860" d:DesignHeight=""
+             x:DataType="fvm:IndexFeedVM"
+             x:Class="Explorer.Views.TabBar.IndexFeedControl">
+
+  <UserControl.Styles>
+    <Style Selector="Rectangle.split">
+      <Setter Property="VerticalAlignment" Value="Stretch"/>
+      <Setter Property="Width" Value="1"/>
+      <Setter Property="Margin" Value="5,1,5,1"/>
+      <Setter Property="StrokeThickness" Value="1"/>
+      <Setter Property="Stroke" Value="Black"/>
+    </Style>
+  </UserControl.Styles>
+  
+  <Grid>
+
+    <StackPanel Orientation="Horizontal">
+      
+      <!--Buffer template-->
+      <StackPanel Orientation="Vertical" 
+                  VerticalAlignment="Bottom">
+        <StackPanel Orientation="Horizontal">
+		
+          <Button Theme="{StaticResource CopyButton}" 
+                  Margin="5" 
+                  Content="Копировать" 
+                  Command="{Binding CopySelectedItemsCommand}"/>
+          <Button Theme="{StaticResource PasteButton}" 
+                  Margin="5" 
+                  Content="Вставить" 
+                  Command="{Binding PasteSavedItemsCommand}"/>
+
+          <StackPanel Orientation="Vertical">
+            <Button Theme="{StaticResource CutButton}" 
+                    Margin="3" 
+                    Content="Вырезать" 
+                    Command="{Binding CutSelectedItemsCommand}"/>
+            <Button Theme="{StaticResource PathButton}" 
+                    Margin="3" 
+                    Content="Скопировать путь" 
+                    Command="{Binding CopySelectedItemPathCommand}"/>
+          </StackPanel>
+        </StackPanel>
+
+        <TextBlock HorizontalAlignment="Center" 
+                   Text="Буфер обмена"/>
+      </StackPanel>
+
+      <Rectangle Classes="split"/>
+
+      <!--Regularize-->
+      <StackPanel Orientation="Vertical" 
+                  VerticalAlignment="Bottom">
+        <StackPanel Orientation="Horizontal">
+         <!--<SplitButton Content="Переместить в"/>
+        <SplitButton Content="Скопировать в"/>-->
+
+
+          <Button Theme="{StaticResource CloseButton}" 
+                  Margin="5" 
+                  Content="Удалить"
+                  Command="{Binding DeleteSelectedItemsCommand}"/>
+          <Button Theme="{StaticResource RenameButton}" 
+                  Margin="5" 
+                  Content="Переименовать"
+                  Command="{Binding RenameSelectedItemCommand}"/>
+        </StackPanel>
+
+        <TextBlock HorizontalAlignment="Center" 
+                   Text=""/>
+      </StackPanel>
+
+      <Rectangle Classes="split"/>
+
+      <!--Create-->
+      <StackPanel Orientation="Vertical" 
+                  VerticalAlignment="Bottom">
+        <Button Theme="{StaticResource FolderPlusButton}" 
+                Margin="5" 
+                Content="Новая папка"
+                Command="{Binding CreateNewFolderCommand}"/>
+
+        <TextBlock HorizontalAlignment="Center" 
+                   Text="Создать"/>
+      </StackPanel>
+
+      <Rectangle Classes="split"/>
+
+      <!--Open-->
+      <StackPanel Orientation="Vertical" 
+                  VerticalAlignment="Bottom">
+        <Button Theme="{StaticResource FolderInfoButton}" 
+                Margin="5" 
+                Content="Свойства"
+                Command="{Binding ShowFolderPropertiesCommand}"/>
+
+        <TextBlock HorizontalAlignment="Center" 
+                   Text="Открыть"/>
+      </StackPanel>
+
+      <Rectangle Classes="split"/>
+
+      <!--Selection-->
+      <StackPanel Orientation="Vertical" 
+                  VerticalAlignment="Bottom">
+        <StackPanel Orientation="Vertical">
+          <Button Theme="{StaticResource SelectAllButton}" 
+                  Margin="2" 
+                  Content="Выделить все"
+                  Command="{Binding SelectAllItemsCommand}"/>
+          <Button Theme="{StaticResource RemoveSelectButton}" 
+                  Margin="2" 
+                  Content="Снять выделение"
+                  Command="{Binding RemoveSelectionCommand}"/>
+          <Button Theme="{StaticResource ReverseSelectButton}" 
+                  Margin="2" 
+                  Content="Обратить выделение"
+                  Command="{Binding RevertSelectionCommand}"/>
+        </StackPanel>
+
+        <TextBlock HorizontalAlignment="Center" 
+                   Text="Выделение"/>
+      </StackPanel>
+
+    </StackPanel>
+
+  </Grid>
+  
+</UserControl>

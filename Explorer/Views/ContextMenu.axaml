@@ -1,0 +1,130 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Explorer.ViewModels"
+             xmlns:m="using:Explorer.Models"
+             xmlns:i="using:Avalonia.Xaml.Interactivity"
+             xmlns:bhv="using:Explorer.Behaviours"
+             xmlns:conv="using:Explorer.Converters"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:DataType="vm:ExplorerVM"
+             x:Class="Explorer.Views.ExplorerControl">
+  <UserControl.Resources>
+    <conv:ItemExplorerToPathConverter x:Key="itemToPathConverter"/>
+  </UserControl.Resources>
+
+  <Grid>
+    <TreeDataGrid x:Name="Tree" Source="{Binding TreeSource}">
+      <Interaction.Behaviors>
+        <bhv:PreviewKeyDownBehavior DownKey="Enter"
+                                    TargetSourceType="{x:Type TreeDataGridExpanderCell}"
+                                    Command="{Binding ChangeSelectedPathCommand}"/>
+      </Interaction.Behaviors>
+
+      <TreeDataGrid.Resources>
+		  
+        <DataTemplate x:Key="ItemNameCell"
+                      DataType="m:ExplorerItemModel">
+          <StackPanel Orientation="Horizontal" 
+                      Background="Transparent"
+                      HorizontalAlignment="Stretch">
+            <Interaction.Behaviors>
+              <bhv:ShowFlyoutOnPointerPressedBehavior/>
+              <bhv:PreviewDoubleTappedBehavior Command="{Binding $parent[UserControl].DataContext.ChangeSelectedPathCommand}"/>
+            </Interaction.Behaviors>
+            <StackPanel.Styles>
+              <Style Selector="FlyoutPresenter">
+                <Setter Property="Padding" Value="0"/>
+              </Style>
+            </StackPanel.Styles>
+            <FlyoutBase.AttachedFlyout>
+              <MenuFlyout ShowMode="Standard"  
+                      Placement="Pointer">
+                <MenuItem Theme="{StaticResource BaseMenuItem}"
+                              Header="Вырезать"
+                              Command="{Binding $parent[UserControl].DataContext.CutSelectedItemsCommand}"
+                              >
+                </MenuItem>
+                <MenuItem Theme="{StaticResource BaseMenuItem}"
+                          Header="Копировать"
+                          Command="{Binding $parent[UserControl].DataContext.CopySelectedItemsCommand}"
+                            />
+                
+                <MenuItem Header="-" 
+                          IsVisible="{Binding IsDirectory}"/>
+                
+                <MenuItem Theme="{StaticResource BaseMenuItem}"
+                          Header="Вставить"
+                          IsVisible="{Binding IsDirectory}"
+                          Command="{Binding $parent[UserControl].DataContext.PasteSavedItemsCommand}"
+                            />
+                
+                <MenuItem Header="-"/>
+                
+                <MenuItem Theme="{StaticResource BaseMenuItem}"
+                          Header="Удалить"
+                          Command="{Binding $parent[UserControl].DataContext.DeleteSelectedItemsCommand}"
+                            />
+                <MenuItem Theme="{StaticResource BaseMenuItem}"
+                          Header="Переименовать"
+                          Command="{Binding $parent[UserControl].DataContext.RenameSelectedItemCommand}"
+                            />
+              </MenuFlyout>
+            </FlyoutBase.AttachedFlyout>
+            
+            
+            <Path Width="20"
+                  Height="20"
+                  VerticalAlignment="Center"
+                  HorizontalAlignment="Center"
+                  Fill="Black">
+              <Path.Theme>
+                <MultiBinding Converter="{StaticResource itemToPathConverter}">
+                  <Binding Path="IsDirectory"/>
+                  <Binding Path="IsExpanded"/>
+                </MultiBinding>
+              </Path.Theme>
+            </Path>
+            <TextBlock Text="{Binding Name}"
+                       Margin="10,0,0,0"
+                       VerticalAlignment="Center"/>
+          </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ItemNameEditCell"
+                      DataType="m:ExplorerItemModel">
+          <StackPanel Orientation="Horizontal"
+                      HorizontalAlignment="Stretch">
+            <Path Width="20"
+                  Height="20"
+                  VerticalAlignment="Center"
+                  HorizontalAlignment="Center"
+                  Fill="Black">
+              <Path.Theme>
+                <MultiBinding Converter="{StaticResource itemToPathConverter}">
+                  <Binding Path="IsDirectory"/>
+                  <Binding Path="IsExpanded"/>
+                </MultiBinding>
+              </Path.Theme>
+            </Path>
+            <TextBox Text="{Binding Name}"
+                     FontSize="14"
+                     Margin="10,0,0,0"
+                     SelectionBrush="LightGray"
+                     VerticalAlignment="Center"/>
+          </StackPanel>
+        </DataTemplate>
+      </TreeDataGrid.Resources>
+
+      <TreeDataGrid.Styles>
+        <Style Selector="TreeDataGrid TreeDataGridRow:nth-child(2n)">
+          <Setter Property="Background"  Value="#20808080"/>
+        </Style>
+      </TreeDataGrid.Styles>
+
+    </TreeDataGrid>
+    
+  </Grid>
+
+</UserControl>

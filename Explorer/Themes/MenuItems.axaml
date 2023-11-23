@@ -1,0 +1,72 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:res="using:Explorer.Themes"
+        xmlns:sys="using:System"
+        >
+  <Styles.Resources>
+    <ControlTheme x:Key="BaseMenuItem" TargetType="MenuItem" BasedOn="{StaticResource {x:Type MenuItem}}">
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="FontSize" Value="12"/>
+      <Setter Property="Cursor" Value="Hand"/>
+      <Setter Property="MaxHeight" Value="30"/>
+      <Setter Property="BorderThickness" Value="0"/>
+
+      <Style Selector="^:pointerover">
+        <Setter Property="Background" Value="LightGray"/>
+      </Style>
+      <Style Selector="^:pressed">
+        <Setter Property="Foreground" Value="LightBlue"/>
+      </Style>
+      <Style Selector="^:disabled">
+        <Setter Property="Opacity" Value="0,3"/>
+      </Style>
+    </ControlTheme>
+  </Styles.Resources>
+
+  <Design.PreviewWith>
+    <StackPanel MinWidth="200" MaxWidth="600">
+      <StackPanel.Resources>
+        <ControlTheme x:Key="ControlPreviewer" TargetType="res:ControlPreviewer">
+          <Setter Property="Template">
+            <ControlTemplate>
+              <Border BorderThickness="1" BorderBrush="LightGray" Padding="4" Margin="4">
+                <DockPanel>
+                  <Button DockPanel.Dock="Right" Content="{TemplateBinding Name}">
+                    <Button.Styles>
+                      <Style Selector="FlyoutPresenter">
+                        <Setter Property="Padding" Value="0"/>
+                      </Style>
+                    </Button.Styles>
+                    <Button.Flyout>
+                      <Flyout ShowMode="TransientWithDismissOnPointerMoveAway" Placement="BottomEdgeAlignedLeft">
+                        <StackPanel Orientation="Vertical">
+                          <MenuItem Theme="{TemplateBinding Key}" Header="{TemplateBinding Name}"/>
+                          <MenuItem Theme="{TemplateBinding Key}" Header="{TemplateBinding Name}" IsEnabled="False"/>
+                        </StackPanel>
+                      </Flyout>
+                    </Button.Flyout>
+                  </Button>
+                </DockPanel>
+              </Border>
+            </ControlTemplate>
+          </Setter>
+        </ControlTheme>
+      </StackPanel.Resources>
+
+      <ItemsControl>
+        <ItemsControl.ItemsPanel>
+          <ItemsPanelTemplate>
+            <WrapPanel />
+          </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <res:ControlPreviewer x:Name="{Binding .}" Theme="{StaticResource ControlPreviewer}" />
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+
+        <sys:String>BaseMenuItem</sys:String>
+      </ItemsControl>
+    </StackPanel>
+  </Design.PreviewWith>
+</Styles>

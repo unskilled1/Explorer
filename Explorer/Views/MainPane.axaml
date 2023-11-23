@@ -1,0 +1,62 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Explorer.ViewModels"
+        xmlns:views="using:Explorer.Views"
+        xmlns:tabfd="using:Explorer.Views.TabBar"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="450"
+        x:Class="Explorer.Views.MainWindow"
+        x:DataType="vm:MainVM"
+        Icon="/Assets/folder.ico"
+        Title="Проводник">
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition MaxHeight="140"/>
+		
+      <RowDefinition Height="auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+
+    <Border Grid.Row="0" BorderThickness="3,2,3,2" BorderBrush="LightGray">
+      <tabfd:TabBarControll  DataContext="{Binding TabFeedVM}"/>
+    </Border>
+
+    <Border Grid.Row="1" BorderThickness="0,0,0,1" BorderBrush="LightGray">
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="auto"/>
+          <ColumnDefinition Width="0.7*"/>
+          <ColumnDefinition Width="0.3*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Orientation="Horizontal">
+          <Button Theme="{StaticResource ArrowLeftButton}" Margin="4" Command="{Binding UndoPathCommand}"/>
+          <Button Theme="{StaticResource ArrowRightButton}" Margin="4" Command="{Binding RedoPathCommand}"/>
+        </StackPanel>
+
+        <TextBox Grid.Column="1" Margin="10,0,10,0" Text="{Binding SelectedPath}"/>
+
+        <TextBox Grid.Column="2" Margin="0,0,10,0" Text="Поиск"/>
+      </Grid>
+    </Border>
+    
+    
+    <Grid Grid.Row="2">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" MaxWidth="300"/>
+        <ColumnDefinition Width="auto"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+
+      <views:QuickAccessControl Grid.Column="0" DataContext="{Binding QAVM}"/>
+      <GridSplitter Grid.Column="1" ShowsPreview="True" Width="3" Background="Black"/>
+      <views:ExplorerControl Grid.Column="2" DataContext="{Binding ExplorerVM}" />
+
+    </Grid>
+    
+  </Grid>
+  
+
+</Window>

@@ -1,0 +1,87 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:res="using:Explorer.Themes"
+        xmlns:sys="using:System"
+        >
+  <Styles.Resources>
+    <ControlTheme x:Key="TabControlBase" TargetType="TabControl" BasedOn="{StaticResource {x:Type TabControl}}">
+      <Setter Property="Background" Value="#F5F6F7"/>
+      <Style Selector="^ /template/ WrapPanel">
+        <Setter Property="Background" Value="#F5F6F7"/>
+      </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="TabItemBase" TargetType="TabItem" BasedOn="{StaticResource {x:Type TabItem}}">
+      <Setter Property="FontSize" Value="13"/>
+      <Setter Property="FontWeight" Value="DemiBold"/>
+      <Setter Property="MaxHeight" Value="30"/>
+      <Setter Property="MinHeight" Value="30"/>
+      <Setter Property="VerticalAlignment" Value="Center"/>
+      <Setter Property="Background" Value="#287cfc"/>
+      <Setter Property="Foreground" Value="#F5F6F7"/>
+      <Setter Property="Margin" Value="0 0 0 0"/>
+
+      <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="#F5F6F7"/>
+      </Style>
+
+      <Style Selector="^:focus">
+        <Setter Property="Foreground" Value="#287cfc"/>
+      </Style>
+
+      <Style Selector="^:focus /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="#F5F6F7"/>
+      </Style>
+
+      <Style Selector="^:selected">
+        <Setter Property="Foreground" Value="#4f688f"/>
+      </Style>
+
+      <Style Selector="^:selected /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="#F5F6F7"/>
+      </Style>
+    </ControlTheme>
+    
+  </Styles.Resources>
+
+  <Design.PreviewWith>
+    <StackPanel Orientation="Vertical" MaxWidth="600">
+      <StackPanel.Resources>
+        <ControlTheme x:Key="ControlPreviewer" TargetType="res:ControlPreviewer">
+          <Setter Property="Template">
+            <ControlTemplate>
+              <Border BorderThickness="1" BorderBrush="LightGray" Padding="4" Margin="4">
+                <DockPanel>
+                  <TabControl Theme="{TemplateBinding Key}" DockPanel.Dock="Right" Margin="4">
+                    <TabItem Theme="{StaticResource TabItemBase}" Header="Кнопка 1 ">
+                      <TextBlock Margin="2" Text="Поле1"/>
+                    </TabItem>
+                    <TabItem Theme="{StaticResource TabItemBase}" Header="Кнопка 2 ">
+                      <TextBlock Margin="2" Text="Поле2"/>
+                    </TabItem>
+                  </TabControl>
+                  <TextBlock Text="{TemplateBinding Name}" Margin="0,0,4,0"/>
+                </DockPanel>
+              </Border>
+            </ControlTemplate>
+          </Setter>
+        </ControlTheme>
+      </StackPanel.Resources>
+
+      <ItemsControl>
+        <ItemsControl.ItemsPanel>
+          <ItemsPanelTemplate>
+            <WrapPanel />
+          </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <res:ControlPreviewer x:Name="{Binding .}" Theme="{StaticResource ControlPreviewer}" />
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+
+        <sys:String>TabControl</sys:String>
+      </ItemsControl>
+    </StackPanel>
+  </Design.PreviewWith>
+</Styles>

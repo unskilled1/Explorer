@@ -1,0 +1,60 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Explorer.ViewModels"
+             xmlns:i="using:Avalonia.Xaml.Interactivity"
+             xmlns:m="using:Explorer.Models"
+             xmlns:bhv="using:Explorer.Behaviours"
+             xmlns:conv="using:Explorer.Converters"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:DataType="vm:QAVM"
+             x:Class="Explorer.Views.QuickAccessControl">
+  <UserControl.Resources>
+    <conv:ItemExplorerToPathConverter x:Key="itemToPathConverter"/>
+  </UserControl.Resources>
+  
+  <Grid>
+    <TreeDataGrid Source="{Binding TreeSource}">
+      <Interaction.Behaviors>
+        <bhv:PreviewDoubleTappedBehavior HandleEvent="True"
+                                         Command="{Binding ChangeSelectedPathCommand}"/>
+        <bhv:PreviewKeyDownBehavior DownKey="Enter"
+                                    TargetSourceType="{x:Type TreeDataGridExpanderCell}"
+                                    Command="{Binding ChangeSelectedPathCommand}"/>
+      </Interaction.Behaviors>
+      
+      <TreeDataGrid.Resources>
+        <DataTemplate x:Key="ItemNameCell" 
+                      DataType="m:ExplorerItemModel">
+          <StackPanel Orientation="Horizontal" 
+                      HorizontalAlignment="Stretch">
+            <Path Width="20" 
+                  Height="20"
+                  VerticalAlignment="Center"
+                  HorizontalAlignment="Center"
+                  Fill="Black">
+              <Path.Theme>
+                <MultiBinding Converter="{StaticResource itemToPathConverter}">
+                  <Binding Path="IsDirectory"/>
+                  <Binding Path="IsExpanded"/>
+                </MultiBinding>
+              </Path.Theme>
+            </Path>
+            <TextBlock Text="{Binding Name}"
+                       Margin="10,0,0,0"
+                       VerticalAlignment="Center"/>
+          </StackPanel>
+        </DataTemplate>
+      </TreeDataGrid.Resources>
+
+      <TreeDataGrid.Styles>
+        <Style Selector="TreeDataGrid TreeDataGridRow:selected">
+          <Setter Property="Background" Value="LightBlue"/>
+        </Style>
+      </TreeDataGrid.Styles>
+
+    </TreeDataGrid>
+
+  </Grid>
+</UserControl>

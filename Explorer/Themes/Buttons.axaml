@@ -1,0 +1,530 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:res="using:Explorer.Themes"
+        xmlns:sys="using:System"
+        >
+
+  <Styles.Resources>
+    <ControlTheme x:Key="ButtonBase" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+      <Setter Property="FontSize" Value="14"/>
+      <Setter Property="Cursor" Value="Hand"/>
+		
+    </ControlTheme>
+
+    <ControlTheme  x:Key="CopyButton" TargetType="Button"
+				  BasedOn="{StaticResource ButtonBase}">
+		
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate  TargetType="Button">
+            <Border Name="buttonBorder"
+                    Background="Transparent"
+                    BorderThickness="0">
+				
+              <StackPanel>
+                <Grid VerticalAlignment="Center"
+                      HorizontalAlignment="Center"
+                      Width="26"
+                      Height="26">
+                  <Path Name="icon"
+                        Theme="{StaticResource CopyPath}"
+                        Margin="3,0,0,0"
+                        Width="22"
+                        Height="22"/>
+                </Grid>
+                <TextBlock Name="text" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{TemplateBinding Content}" />
+              </StackPanel>
+            </Border>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+      
+      <Style Selector="^:pointerover /template/ Border#buttonBorder">
+        <Setter Property="Background" Value="LightGray"/>
+      </Style>
+
+      <Style Selector="^:pressed">
+        <Style Selector="^ /template/ Path#icon">
+			<Setter Property="Fill" Value="Black"/>
+        </Style>
+      </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="PasteButton" TargetType="Button" BasedOn="{StaticResource ButtonBase}">
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border Name="buttonBorder"
+                    Background="Transparent"
+                    BorderThickness="0">
+              <StackPanel>
+                <Grid VerticalAlignment="Center"
+                      HorizontalAlignment="Center"
+                      Width="26"
+                      Height="26">
+                  <Path Name="icon"
+                        Theme="{StaticResource PastePath}"
+                        Margin="3,0,0,0"
+                        Width="22"
+                        Height="22"/>
+                </Grid>
+                <TextBlock Name="text" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{TemplateBinding Content}" />
+              </StackPanel>
+            </Border>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+
+      <Style Selector="^:pointerover /template/ Border#buttonBorder">
+        <Setter Property="Background" Value="LightGray"/>
+      </Style>
+
+      <Style Selector="^:pressed">
+        <Style Selector="^ /template/ Path#icon">
+          <Setter Property="Fill" Value="Black"/>
+        </Style>
+      </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="CutButton" TargetType="Button" BasedOn="{StaticResource ButtonBase}">
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border Name="buttonBorder"
+                    Background="Transparent"
+                    BorderThickness="0">
+              <StackPanel Orientation="Horizontal">
+                <Grid VerticalAlignment="Center"
+                      HorizontalAlignment="Center"
+                      Width="26"
+                      Height="26">
+                  <Path Name="icon"
+                        Theme="{StaticResource CutPath}"
+                        Margin="3,0,0,0"
+                        Width="22"
+                        Height="22"/>
+                </Grid>
+                <TextBlock Name="text" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{TemplateBinding Content}" />
+              </StackPanel>
+            </Border>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+
+      <Style Selector="^:pointerover /template/ Border#buttonBorder">
+        <Setter Property="Background" Value="LightGray"/>
+      </Style>
+
+      <Style Selector="^:pressed">
+        <Style Selector="^ /template/ Path#icon">
+          <Setter Property="Fill" Value="Black"/>
+        </Style>
+      </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="PathButton" TargetType="Button" BasedOn="{StaticResource ButtonBase}">
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border Name="buttonBorder"
+                    Background="Transparent"
+                    BorderThickness="0">
+              <StackPanel Orientation="Horizontal">
+                <Grid VerticalAlignment="Center"
+                      HorizontalAlignment="Center"
+                      Width="26"
+                      Height="26">
+                  <Path Name="icon"
+                        Theme="{StaticResource ExportPath}"
+                        Margin="3,0,0,0"
+                        Width="22"
+                        Height="22"/>
+                </Grid>
+                <TextBlock Name="text" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{TemplateBinding Content}" />
+              </StackPanel>
+            </Border>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+
+      <Style Selector="^:pointerover /template/ Border#buttonBorder">
+        <Setter Property="Background" Value="LightGray"/>
+      </Style>
+
+      <Style Selector="^:pressed">
+        <Style Selector="^ /template/ Path#icon">
+          <Setter Property="Fill" Value="Black"/>
+        </Style>
+      </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="CloseButton" TargetType="Button" BasedOn="{StaticResource ButtonBase}">
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border Name="buttonBorder"
+                    Background="Transparent"
+					BorderThickness="0">
+              <StackPanel>
+                <Grid VerticalAlignment="Center"
+                      HorizontalAlignment="Center"
+                      Width="26"
+                      Height="26">
+                  <Path Name="icon"
+                        Theme="{StaticResource ClosePath}"
+                        Margin="3,0,0,0"
+                        Width="22"
+                        Height="22"/>
+                </Grid>
+                <TextBlock Name="text" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{TemplateBinding Content}" />
+              </StackPanel>
+            </Border>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+
+      <Style Selector="^:pointerover /template/ Border#buttonBorder">
+        <Setter Property="Background" Value="LightGray"/>
+      </Style>
+
+      <Style Selector="^:pressed">
+        <Style Selector="^ /template/ Path#icon">
+          <Setter Property="Fill" Value="Black"/>
+        </Style>
+      </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="RenameButton" TargetType="Button" BasedOn="{StaticResource ButtonBase}">
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border Name="buttonBorder"
+                    Background="Transparent"
+                    BorderThickness="0">
+              <StackPanel>
+                <Grid VerticalAlignment="Center"
+                      HorizontalAlignment="Center"
+                      Width="26"
+                      Height="26">
+                  <Path Name="icon"
+                        Theme="{StaticResource RenamePath}"
+                        Margin="3,0,0,0"
+                        Width="22"
+                        Height="22"/>
+                </Grid>
+                <TextBlock Name="text" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{TemplateBinding Content}" />
+              </StackPanel>
+            </Border>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+
+      <Style Selector="^:pointerover /template/ Border#buttonBorder">
+        <Setter Property="Background" Value="LightGray"/>
+      </Style>
+
+      <Style Selector="^:pressed">
+        <Style Selector="^ /template/ Path#icon">
+          <Setter Property="Fill" Value="Black"/>
+        </Style>
+      </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="FolderPlusButton" TargetType="Button" BasedOn="{StaticResource ButtonBase}">
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border Name="buttonBorder"
+                    Background="Transparent"
+                    BorderThickness="0">
+              <StackPanel>
+                <Grid VerticalAlignment="Center"
+                      HorizontalAlignment="Center"
+                      Width="26"
+                      Height="26">
+                  <Path Name="icon"
+                        Theme="{StaticResource FolderPlusPath}"
+                        Margin="3,0,0,0"
+                        Width="22"
+                        Height="22"/>
+                </Grid>
+                <TextBlock Name="text" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{TemplateBinding Content}" />
+              </StackPanel>
+            </Border>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+
+      <Style Selector="^:pointerover /template/ Border#buttonBorder">
+        <Setter Property="Background" Value="LightGray"/>
+      </Style>
+
+      <Style Selector="^:pressed">
+        <Style Selector="^ /template/ Path#icon">
+          <Setter Property="Fill" Value="Black"/>
+        </Style>
+      </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="FolderInfoButton" TargetType="Button" BasedOn="{StaticResource ButtonBase}">
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border Name="buttonBorder"
+                    Background="Transparent"
+                    BorderThickness="0">
+              <StackPanel>
+                <Grid VerticalAlignment="Center"
+                      HorizontalAlignment="Center"
+                      Width="26"
+                      Height="26">
+                  <Path Name="icon"
+                        Theme="{StaticResource FolderInfoPath}"
+                        Margin="3,0,0,0"
+                        Width="22"
+                        Height="22"/>
+                </Grid>
+                <TextBlock Name="text" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{TemplateBinding Content}" />
+              </StackPanel>
+            </Border>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+
+      <Style Selector="^:pointerover /template/ Border#buttonBorder">
+        <Setter Property="Background" Value="LightGray"/>
+      </Style>
+
+      <Style Selector="^:pressed">
+        <Style Selector="^ /template/ Path#icon">
+          <Setter Property="Fill" Value="Black"/>
+        </Style>
+      </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="SelectAllButton" TargetType="Button" BasedOn="{StaticResource ButtonBase}">
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border Name="buttonBorder"
+                    Background="Transparent"
+                    BorderThickness="0">
+              <StackPanel Orientation="Horizontal">
+                <Grid VerticalAlignment="Center"
+                      HorizontalAlignment="Center"
+                      Width="26"
+                      Height="26">
+                  <Path Name="icon"
+                        Theme="{StaticResource SelectAllPath}"
+                        Margin="0,0,0,0"
+                        Width="22"
+                        Height="22"/>
+                </Grid>
+                <TextBlock Margin="3,0,0,0" Name="text" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{TemplateBinding Content}" />
+              </StackPanel>
+            </Border>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+
+      <Style Selector="^:pointerover /template/ Border#buttonBorder">
+        <Setter Property="Background" Value="LightGray"/>
+      </Style>
+
+      <Style Selector="^:pressed">
+        <Style Selector="^ /template/ Path#icon">
+          <Setter Property="Fill" Value="Black"/>
+        </Style>
+      </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="RemoveSelectButton" TargetType="Button" BasedOn="{StaticResource ButtonBase}">
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border Name="buttonBorder"
+                    Background="Transparent"
+                    BorderThickness="0">
+              <StackPanel Orientation="Horizontal">
+                <Grid VerticalAlignment="Center"
+                      HorizontalAlignment="Center"
+                      Width="26"
+                      Height="26">
+                  <Path Name="icon"
+                        Theme="{StaticResource RemoveSelectPath}"
+                        Margin="0,0,0,0"
+                        Width="22"
+                        Height="22"/>
+                </Grid>
+                <TextBlock Margin="3,0,0,0" Name="text" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{TemplateBinding Content}" />
+              </StackPanel>
+            </Border>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+
+      <Style Selector="^:pointerover /template/ Border#buttonBorder">
+        <Setter Property="Background" Value="LightGray"/>
+      </Style>
+
+      <Style Selector="^:pressed">
+        <Style Selector="^ /template/ Path#icon">
+          <Setter Property="Fill" Value="Black"/>
+        </Style>
+      </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="ReverseSelectButton" TargetType="Button" BasedOn="{StaticResource ButtonBase}">
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border Name="buttonBorder"
+                    Background="Transparent"
+                    BorderThickness="0">
+              <StackPanel Orientation="Horizontal">
+                <Grid VerticalAlignment="Center"
+                      HorizontalAlignment="Center"
+                      Width="26"
+                      Height="26">
+                  <Path Name="icon"
+                        Theme="{StaticResource ReverseSelectPath}"
+                        Margin="0,0,0,0"
+                        Width="22"
+                        Height="22"/>
+                </Grid>
+                <TextBlock Name="text" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{TemplateBinding Content}" />
+              </StackPanel>
+            </Border>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+
+      <Style Selector="^:pointerover /template/ Border#buttonBorder">
+        <Setter Property="Background" Value="LightGray"/>
+      </Style>
+
+      <Style Selector="^:pressed">
+        <Style Selector="^ /template/ Path#icon">
+          <Setter Property="Fill" Value="Black"/>
+        </Style>
+      </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="ArrowLeftButton" TargetType="Button" BasedOn="{StaticResource ButtonBase}">
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border Name="buttonBorder"
+                    Background="Transparent"
+                    BorderThickness="0">
+              <StackPanel Orientation="Horizontal">
+                <Grid VerticalAlignment="Center"
+                      HorizontalAlignment="Center"
+                      Width="26"
+                      Height="26">
+                  <Path Name="icon"
+                        Theme="{StaticResource ArrowLeftThickPath}"
+                        Margin="0,0,0,0"
+                        Width="15"
+                        Height="15"/>
+                </Grid>
+                <TextBlock Name="text" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{TemplateBinding Content}" />
+              </StackPanel>
+            </Border>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+
+      <Style Selector="^:pointerover /template/ Border#buttonBorder">
+        <Setter Property="Background" Value="LightGray"/>
+      </Style>
+
+      <Style Selector="^:pressed">
+        <Style Selector="^ /template/ Path#icon">
+          <Setter Property="Fill" Value="Black"/>
+        </Style>
+      </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="ArrowRightButton" TargetType="Button" BasedOn="{StaticResource ButtonBase}">
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border Name="buttonBorder"
+                    Background="Transparent"
+                    BorderThickness="0">
+              <StackPanel Orientation="Horizontal">
+                <Grid VerticalAlignment="Center"
+                      HorizontalAlignment="Center"
+                      Width="26"
+                      Height="26">
+                  <Path Name="icon"
+                        Theme="{StaticResource ArrowRightThickPath}"
+                        Margin="0,0,0,0"
+                        Width="15"
+                        Height="15"/>
+                </Grid>
+                <TextBlock Name="text" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{TemplateBinding Content}" />
+              </StackPanel>
+            </Border>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+
+      <Style Selector="^:pointerover /template/ Border#buttonBorder">
+        <Setter Property="Background" Value="LightGray"/>
+      </Style>
+
+      <Style Selector="^:pressed">
+        <Style Selector="^ /template/ Path#icon">
+          <Setter Property="Fill" Value="Black"/>
+        </Style>
+      </Style>
+    </ControlTheme>
+
+  </Styles.Resources>
+  
+  <Design.PreviewWith>
+    <StackPanel MinWidth="200" MaxWidth="600">
+      <StackPanel.Resources>
+        <ControlTheme x:Key="ControlPreviewer" TargetType="res:ControlPreviewer">
+          <Setter Property="Template">
+            <ControlTemplate>
+              <Border BorderThickness="1" BorderBrush="LightGray" Padding="4" Margin="4">
+                <Button Theme="{TemplateBinding Key}" Content="{TemplateBinding Name}"/>
+              </Border>
+            </ControlTemplate>
+          </Setter>
+        </ControlTheme>
+      </StackPanel.Resources>
+      
+      <ItemsControl>
+        <ItemsControl.ItemsPanel>
+          <ItemsPanelTemplate>
+            <WrapPanel />
+          </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <res:ControlPreviewer x:Name="{Binding .}" Theme="{StaticResource ControlPreviewer}" />
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>        
+		  
+        <sys:String>ButtonBase</sys:String>
+        <sys:String>CopyButton</sys:String>
+        <sys:String>PasteButton</sys:String>
+		<sys:String>CutButton</sys:String>
+        <sys:String>PathButton</sys:String>
+        <sys:String>CloseButton</sys:String>
+        <sys:String>RenameButton</sys:String>
+        <sys:String>FolderPlusButton</sys:String>
+        <sys:String>FolderInfoButton</sys:String>
+        <sys:String>SelectAllButton</sys:String>
+        <sys:String>RemoveSelectButton</sys:String>
+        <sys:String>ReverseSelectButton</sys:String>
+        <sys:String>ArrowLeftButton</sys:String>
+        <sys:String>ArrowRightButton</sys:String>
+      </ItemsControl>
+    </StackPanel>
+  </Design.PreviewWith>
+</Styles>
