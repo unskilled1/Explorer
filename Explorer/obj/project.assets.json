@@ -5006,11 +5006,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\New folder\\New folder1\\Explorer\\Explorer\\Explorer.csproj",
+      "projectUniqueName": "D:\\Explorer\\Explorer\\Explorer.csproj",
       "projectName": "Explorer",
-      "projectPath": "D:\\New folder\\New folder1\\Explorer\\Explorer\\Explorer.csproj",
+      "projectPath": "D:\\Explorer\\Explorer\\Explorer.csproj",
       "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "D:\\New folder\\New folder1\\Explorer\\Explorer\\obj\\",
+      "outputPath": "D:\\Explorer\\Explorer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

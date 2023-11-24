@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gjv/3XLR6wwQvC6jFNvdUN7mzRziQ4Fdg9mRshmLpWV5EwizkrjLVcLYQJzZssVBnr5487tcM+3uu9Wt5yGLhw==",
+  "dgSpecHash": "uWkVVBFxDq9hwb/SEUaRHRXDmWS/L0tXp/MPNFC28LmXcnK0qig+n6JtTuv6EQ0MLzsz36Xb3Eau0x5+SfBKnQ==",
   "success": true,
-  "projectFilePath": "D:\\New folder\\New folder1\\Explorer\\Explorer\\Explorer.csproj",
+  "projectFilePath": "D:\\Explorer\\Explorer\\Explorer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\admin\\.nuget\\packages\\avalonia\\11.0.4\\avalonia.11.0.4.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\avalonia.angle.windows.natives\\2.1.0.2023020321\\avalonia.angle.windows.natives.2.1.0.2023020321.nupkg.sha512",
